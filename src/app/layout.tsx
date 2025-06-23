@@ -24,7 +24,6 @@ export default function RootLayout({
         <script src="/js/modernizr.js"></script>
         <script src="/js/pace.min.js"></script>
       </head>
-
       <body className={inter.className}>
         <Header />
         {children}

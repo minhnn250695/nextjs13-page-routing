@@ -1,0 +1,76 @@
+/* Login Form Styles */
+.login-container {
+  font-size: 2rem !important;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.login-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #151515;
+}
+.login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background: #fafafa;
+  transition: border 0.2s;
+}
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #1237B1;
+  outline: none;
+  background-color: rgb(180 180 180 / 70%);;
+}
+.login-form .login-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #1237B1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-form .login-btn:hover {
+  background: #0d286e;
+}
+.login-form .login-links {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+.login-form .login-links a {
+  color: #1237B1;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-size: 0.97rem;
+}
+.login-form .login-links a:hover {
+  text-decoration: underline;
+}
+.login-error {
+  color: #e65153;
+  background: #ffd1d2;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.98rem;
+}
