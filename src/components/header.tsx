@@ -11,12 +11,12 @@ export default function Header() {
         <nav id="main-nav-wrap">
           <ul className="main-navigation sf-menu">
             <li>
-              <a href="/home" title="">
+              <a href="/" title="">
                 Home
               </a>
             </li>
             <li className="has-children">
-              <a href="category" title="">
+              <a href="/category" title="">
                 Categories
               </a>
               <ul className="sub-menu">
@@ -41,32 +41,32 @@ export default function Header() {
               </ul>
             </li>
             <li className="has-children">
-              <a href="single-standard" title="">
+              <a href="/blog" title="">
                 Blog
               </a>
               <ul className="sub-menu">
                 <li>
-                  <a href="single-video">Video Post</a>
+                  <a href="blog/single-video">Video Post</a>
                 </li>
                 <li>
-                  <a href="single-audio">Audio Post</a>
+                  <a href="blog/single-audio">Audio Post</a>
                 </li>
                 <li>
-                  <a href="single-gallery">Gallery Post</a>
+                  <a href="blog/single-gallery">Gallery Post</a>
                 </li>
                 <li>
-                  <a href="single-standard">Standard Post</a>
+                  <a href="blog/single-standard">Standard Post</a>
                 </li>
               </ul>
             </li>
             
-            <li className="current">
-              <a href="about" title="">
+            <li className="">
+              <a href="/about" title="">
                 About
               </a>
             </li>
             <li>
-              <a href="contact" title="">
+              <a href="/contact" title="">
                 Contact
               </a>
             </li>

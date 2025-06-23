@@ -1,19 +1,24 @@
-export default function Blog() {
+export default function SingleVideo() {
   return (
     <>
       <section id="content-wrap" className="blog-single">
         <div className="row">
           <div className="col-twelve">
-            <article className="format-standard">
+            <article className="format-video">
               <div className="content-media">
-                <div className="post-thumb">
-                  <img src="images/thumbs/single/single-01.jpg" />
+                <div className="fluid-video-wrapper">
+                  <iframe
+                    src="https://player.vimeo.com/video/14592941?title=0&byline=0&portrait=0"
+                    width="640"
+                    height="360"
+                    frameBorder="0"
+                  ></iframe>
                 </div>
               </div>
 
               <div className="primary-content">
-                <h1 className="page-title">
-                  Hey, This Is A Standard Format Post.
+                <h1 className="entry-title">
+                  Hey, This Is A Video Format Post.
                 </h1>
 
                 <ul className="entry-meta">
@@ -99,7 +104,7 @@ export default function Blog() {
                   impedit quo minus id quod maxime placeat facere possimus,
                   omnis voluptas assumenda est, omnis dolor repellendus.
                 </p>
-               
+
                 <p>
                   Odio dignissimos ducimus qui blanditiis praesentium voluptatum
                   deleniti atque corrupti dolores et quas molestias excepturi
@@ -172,7 +177,6 @@ export default function Blog() {
                   </div>
                 </div>
               </div>
-
               <div className="pagenav group">
                 <div className="prev-nav">
                   <a href="#" rel="prev">
@@ -375,7 +379,7 @@ export default function Blog() {
 
                   <div className="comment-content">
                     <div className="comment-info">
-                      <cite>Shikamaru Nara</cite>
+                      <cite>Hinata Hyuga</cite>
 
                       <div className="comment-meta">
                         <time
