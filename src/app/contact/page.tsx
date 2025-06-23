@@ -1,6 +1,19 @@
 "use client"
 
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function Contact() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+      if (isLoggedIn !== "true") {
+        router.replace("/login");
+      }
+    }
+  }, [router]);
   return (
     <>
       <section id="content-wrap" className="site-page">
