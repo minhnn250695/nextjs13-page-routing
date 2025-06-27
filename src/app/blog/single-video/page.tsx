@@ -1,4 +1,27 @@
+'use client';
+import { useState } from 'react';
+
 export default function SingleVideo() {
+  const [commentData, setCommentData] = useState({
+    name: '',
+    email: '',
+    website: '',
+    message: ''
+  });
+
+  const handleCommentChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setCommentData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleCommentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Comment submitted:', commentData);
+    setCommentData({ name: '', email: '', website: '', message: '' });
+  };
   return <> 
    <section id="content-wrap" className="blog-single">
    	<div className="row">
@@ -255,23 +278,23 @@ export default function SingleVideo() {
 
                	<h3>Leave a Comment</h3>
 
-                  <form name="contactForm" id="contactForm" method="post" action="">
+                  <form name="contactForm" id="contactForm" method="post" onSubmit={handleCommentSubmit}>
   					   <fieldset>
 
                      <div className="form-field">
-  						      <input name="cName" type="text" id="cName" className="full-width" placeholder="Your Name" value=""/>
+  						      <input name="name" type="text" id="cName" className="full-width" placeholder="Your Name" value={commentData.name} onChange={handleCommentChange} required />
                      </div>
 
                      <div className="form-field">
-  						      <input name="cEmail" type="text" id="cEmail" className="full-width" placeholder="Your Email" value=""/>
+  						      <input name="email" type="email" id="cEmail" className="full-width" placeholder="Your Email" value={commentData.email} onChange={handleCommentChange} required />
                      </div>
 
                      <div className="form-field">
-  						      <input name="cWebsite" type="text" id="cWebsite" className="full-width" placeholder="Website"  value=""/>
+  						      <input name="website" type="url" id="cWebsite" className="full-width" placeholder="Website" value={commentData.website} onChange={handleCommentChange} />
                      </div>
 
                      <div className="message form-field">
-                        <textarea name="cMessage" id="cMessage" className="full-width" placeholder="Your Message" ></textarea>
+                        <textarea name="message" id="cMessage" className="full-width" placeholder="Your Message" value={commentData.message} onChange={handleCommentChange} required></textarea>
                      </div>
 
                      <button type="submit" className="submit button-primary">Submit</button>

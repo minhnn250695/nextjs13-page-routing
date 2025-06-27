@@ -132,3 +132,103 @@ export const photographyCategory: CategoryData = {
     }
   ]
 };
+
+// Export a full categories object with multiple categories
+export const categories: Record<string, CategoryData> = {
+  photography: photographyCategory,
+  
+  wordpress: {
+    name: "WordPress",
+    description: "WordPress development tips, themes, and plugins",
+    posts: [
+      {
+        id: "wp-1",
+        format: "standard",
+        title: "Creating Custom WordPress Themes",
+        url: "blog/wordpress-themes",
+        excerpt: "Learn how to create beautiful and functional WordPress themes from scratch.",
+        categories: ["WordPress", "Development"],
+        image: "images/thumbs/wordpress-theme.jpg",
+        imageAlt: "WordPress theme development"
+      },
+      {
+        id: "wp-2",
+        format: "standard",
+        title: "Best WordPress Plugins for 2024",
+        url: "blog/wordpress-plugins",
+        excerpt: "Discover the most essential WordPress plugins for modern websites.",
+        categories: ["WordPress", "Plugins"],
+        image: "images/thumbs/wordpress-plugins.jpg",
+        imageAlt: "WordPress plugins"
+      }
+    ]
+  },
+  
+  html: {
+    name: "HTML",
+    description: "HTML5 tutorials, best practices, and modern techniques",
+    posts: [
+      {
+        id: "html-1",
+        format: "standard",
+        title: "HTML5 Semantic Elements Guide",
+        url: "blog/html5-semantic",
+        excerpt: "Master HTML5 semantic elements for better accessibility and SEO.",
+        categories: ["HTML", "Web Development"],
+        image: "images/thumbs/html5-semantic.jpg",
+        imageAlt: "HTML5 semantic elements"
+      }
+    ]
+  },
+  
+  ui: {
+    name: "UI Design",
+    description: "User interface design principles and trends",
+    posts: [
+      {
+        id: "ui-1",
+        format: "standard",
+        title: "Modern UI Design Principles",
+        url: "blog/ui-design-principles",
+        excerpt: "Essential UI design principles for creating intuitive user interfaces.",
+        categories: ["UI", "Design"],
+        image: "images/thumbs/ui-design.jpg",
+        imageAlt: "UI design principles"
+      }
+    ]
+  },
+  
+  mockups: {
+    name: "Mockups",
+    description: "Design mockups and prototyping resources",
+    posts: [
+      {
+        id: "mock-1",
+        format: "standard",
+        title: "Creating Realistic Design Mockups",
+        url: "blog/design-mockups",
+        excerpt: "Tips for creating professional design mockups that impress clients.",
+        categories: ["Mockups", "Design"],
+        image: "images/thumbs/design-mockups.jpg",
+        imageAlt: "Design mockups"
+      }
+    ]
+  },
+  
+  branding: {
+    name: "Branding",
+    description: "Brand identity and logo design inspiration",
+    posts: [
+      {
+        id: "brand-1",
+        format: "standard",
+        title: "Building Strong Brand Identity",
+        url: "blog/brand-identity",
+        excerpt: "Learn how to create memorable and effective brand identities.",
+        categories: ["Branding", "Design"],
+        image: "images/thumbs/brand-identity.jpg",
+        imageAlt: "Brand identity design"
+      }
+    ]
+  }
+};

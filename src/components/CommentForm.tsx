@@ -3,9 +3,10 @@ import { useState } from "react";
 
 interface CommentFormProps {
   onSubmit?: (data: { name: string; email: string; website: string; message: string }) => void;
+  isSubmitting?: boolean;
 }
 
-export default function CommentForm({ onSubmit }: CommentFormProps) {
+export default function CommentForm({ onSubmit, isSubmitting = false }: CommentFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -83,8 +84,8 @@ export default function CommentForm({ onSubmit }: CommentFormProps) {
             />
           </div>
 
-          <button type="submit" className="submit button-primary">
-            Submit
+          <button type="submit" className="submit button-primary" disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </fieldset>
       </form>

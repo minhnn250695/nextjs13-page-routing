@@ -1,4 +1,19 @@
+"use client";
+import { useState } from "react";
+
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle email subscription here
+    console.log('Subscribe email:', email);
+    setEmail("");
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
   return (
     <>
       <div className="footer-main">
@@ -64,20 +79,22 @@ export default function Footer() {
             <p>Keep yourself updated. Subscribe to our newsletter.</p>
 
             <div className="subscribe-form">
-              <div id="mc-form" className="group">
+              <form id="mc-form" className="group" onSubmit={handleEmailSubmit}>
                 <input
                   type="email"
-                  value=""
+                  value={email}
+                  onChange={handleEmailChange}
                   name="dEmail"
                   className="email"
                   id="mc-email"
                   placeholder="Type &amp; press enter"
+                  required
                 />
 
                 <input type="submit" name="subscribe" />
 
                 <label className="subscribe-message"></label>
-              </div>
+              </form>
             </div>
           </div>
         </div>

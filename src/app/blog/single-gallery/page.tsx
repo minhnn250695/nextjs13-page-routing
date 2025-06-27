@@ -1,4 +1,27 @@
+'use client';
+import { useState } from 'react';
+
 export default function SingleGallery() {
+  const [commentData, setCommentData] = useState({
+    name: '',
+    email: '',
+    website: '',
+    message: ''
+  });
+
+  const handleCommentChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setCommentData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleCommentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Comment submitted:', commentData);
+    setCommentData({ name: '', email: '', website: '', message: '' });
+  };
   return (
     <>
       <section id="content-wrap" className="blog-single">
@@ -418,48 +441,56 @@ export default function SingleGallery() {
                   name="contactForm"
                   id="contactForm"
                   method="post"
-                  action=""
+                  onSubmit={handleCommentSubmit}
                 >
                   <fieldset>
                     <div className="form-field">
                       <input
-                        name="cName"
+                        name="name"
                         type="text"
                         id="cName"
                         className="full-width"
                         placeholder="Your Name"
-                        value=""
+                        value={commentData.name}
+                        onChange={handleCommentChange}
+                        required
                       />
                     </div>
 
                     <div className="form-field">
                       <input
-                        name="cEmail"
-                        type="text"
+                        name="email"
+                        type="email"
                         id="cEmail"
                         className="full-width"
                         placeholder="Your Email"
-                        value=""
+                        value={commentData.email}
+                        onChange={handleCommentChange}
+                        required
                       />
                     </div>
 
                     <div className="form-field">
                       <input
-                        name="cWebsite"
-                        type="text"
+                        name="website"
+                        type="url"
                         id="cWebsite"
                         className="full-width"
                         placeholder="Website"
-                        value=""
+                        value={commentData.website}
+                        onChange={handleCommentChange}
                       />
                     </div>
 
                     <div className="message form-field">
                       <textarea
-                        name="cMessage"
+                        name="message"
                         id="cMessage"
                         className="full-width"
                         placeholder="Your Message"
+                        value={commentData.message}
+                        onChange={handleCommentChange}
+                        required
                       ></textarea>
                     </div>
 

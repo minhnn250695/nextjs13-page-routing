@@ -4,6 +4,7 @@ import { isLoggedIn, logout } from "../utils/auth";
 
 export default function Header() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     // Check login status on component mount
@@ -12,6 +13,16 @@ export default function Header() {
 
   const handleLogout = () => {
     logout();
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle search functionality here
+    console.log('Search query:', searchQuery);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -36,22 +47,22 @@ export default function Header() {
               </a>
               <ul className="sub-menu">
                 <li>
-                  <a href="category">Wordpress</a>
+                  <a href="/category?slug=wordpress">Wordpress</a>
                 </li>
                 <li>
-                  <a href="category">HTML</a>
+                  <a href="/category?slug=html">HTML</a>
                 </li>
                 <li>
-                  <a href="category">Photography</a>
+                  <a href="/category?slug=photography">Photography</a>
                 </li>
                 <li>
-                  <a href="category">UI</a>
+                  <a href="/category?slug=ui">UI</a>
                 </li>
                 <li>
-                  <a href="category">Mockups</a>
+                  <a href="/category?slug=mockups">Mockups</a>
                 </li>
                 <li>
-                  <a href="category">Branding</a>
+                  <a href="/category?slug=branding">Branding</a>
                 </li>
               </ul>
             </li>
@@ -61,16 +72,16 @@ export default function Header() {
               </a>
               <ul className="sub-menu">
                 <li>
-                  <a href="blog/single-video">Video Post</a>
+                  <a href="/blog?id=10">Video Post</a>
                 </li>
                 <li>
-                  <a href="blog/single-audio">Audio Post</a>
+                  <a href="/blog?id=3">Audio Post</a>
                 </li>
                 <li>
-                  <a href="blog/single-gallery">Gallery Post</a>
+                  <a href="/blog?id=7">Gallery Post</a>
                 </li>
                 <li>
-                  <a href="blog/single-standard">Standard Post</a>
+                  <a href="/blog?id=1">Standard Post</a>
                 </li>
               </ul>
             </li>
@@ -102,14 +113,15 @@ export default function Header() {
         </nav>
 
         <div className="search-wrap">
-          <form role="search" method="get" className="search-form" action="#">
+          <form role="search" method="get" className="search-form" onSubmit={handleSearchSubmit}>
             <label>
               <span className="hide-content">Search for:</span>
               <input
                 type="search"
                 className="search-field"
                 placeholder="Type Your Keywords"
-                value=""
+                value={searchQuery}
+                onChange={handleSearchChange}
                 name="s"
                 title="Search for:"
               />

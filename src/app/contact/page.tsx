@@ -1,7 +1,30 @@
 'use client';
+import { useState } from 'react';
 import Script from 'next/script';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    website: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Contact form submitted:', formData);
+    // Reset form
+    setFormData({ name: '', email: '', website: '', message: '' });
+  };
   return (
     <>
       <section id="content-wrap" className="site-page">
@@ -66,47 +89,55 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                <form name="cForm" id="cForm" method="post" action="">
+                <form name="cForm" id="cForm" method="post" onSubmit={handleSubmit}>
                   <fieldset>
                     <div className="form-field">
                       <input
-                        name="cName"
+                        name="name"
                         type="text"
                         id="cName"
                         className="full-width"
                         placeholder="Your Name"
-                        value=""
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
 
                     <div className="form-field">
                       <input
-                        name="cEmail"
-                        type="text"
+                        name="email"
+                        type="email"
                         id="cEmail"
                         className="full-width"
                         placeholder="Your Email"
-                        value=""
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
 
                     <div className="form-field">
                       <input
-                        name="cWebsite"
-                        type="text"
+                        name="website"
+                        type="url"
                         id="cWebsite"
                         className="full-width"
                         placeholder="Website"
-                        value=""
+                        value={formData.website}
+                        onChange={handleChange}
                       />
                     </div>
 
                     <div className="message form-field">
                       <textarea
-                        name="cMessage"
+                        name="message"
                         id="cMessage"
                         className="full-width"
                         placeholder="Your Message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
                       ></textarea>
                     </div>
 
