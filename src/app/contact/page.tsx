@@ -1,19 +1,7 @@
-"use client"
-
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+'use client';
+import Script from 'next/script';
 
 export default function Contact() {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isLoggedIn = localStorage.getItem("isLoggedIn");
-      if (isLoggedIn !== "true") {
-        router.replace("/login");
-      }
-    }
-  }, [router]);
   return (
     <>
       <section id="content-wrap" className="site-page">
@@ -135,10 +123,35 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      {/* <script src="js/jquery-2.1.3.min.js"></script>
-      <script src="js/plugins.js"></script>
-      <script src="http://maps.google.com/maps/api/js?v=3.13&amp;sensor=false"></script>
-      <script src="js/main.js"></script> */}
+      
+      {/* Google Maps Script */}
+      <Script
+        src="https://maps.googleapis.com/maps/api/js?v=3.13&sensor=false"
+        strategy="lazyOnload"
+        onLoad={() => {
+          // Initialize Google Maps
+          if (typeof window !== 'undefined' && (window as any).google) {
+            const mapOptions = {
+              zoom: 14,
+              center: new (window as any).google.maps.LatLng(-37.817331, 144.955633),
+              mapTypeId: (window as any).google.maps.MapTypeId.ROADMAP,
+              scrollwheel: false,
+              draggable: false,
+              mapTypeControl: false
+            };
+
+            const mapElement = document.getElementById('map-container');
+            if (mapElement) {
+              const map = new (window as any).google.maps.Map(mapElement, mapOptions);
+              const marker = new (window as any).google.maps.Marker({
+                position: new (window as any).google.maps.LatLng(-37.817331, 144.955633),
+                map: map,
+                title: "We are here"
+              });
+            }
+          }
+        }}
+      />
     </>
   );
 }

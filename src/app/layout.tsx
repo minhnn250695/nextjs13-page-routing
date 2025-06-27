@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,13 +22,15 @@ export default function RootLayout({
         <link rel="stylesheet" href="/css/base.css" />
         <link rel="stylesheet" href="/css/vendor.css" />
         <link rel="stylesheet" href="/css/main.css" />
-        <script src="/js/modernizr.js"></script>
-        <script src="/js/pace.min.js"></script>
       </head>
       <body className={inter.className}>
         <Header />
         {children}
         <Footer />
+        
+        {/* Scripts loaded with Next.js Script component */}
+        <Script src="/js/modernizr.js" strategy="beforeInteractive" />
+        <Script src="/js/pace.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );

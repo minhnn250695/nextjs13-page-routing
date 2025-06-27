@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { setCookie } from "../../utils/auth";
 import "../../css/login.css";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,8 +21,15 @@ export default function Login() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (username === "admin" && password === "password") {
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "/contact";
+      setCookie("isLoggedIn", "true", 7); // Cookie expires in 7 days
+      
+      const fakeToken = `fake-jwt-token-${Date.now()}`;
+      setCookie("authToken", fakeToken, 7);
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectTo = urlParams.get('redirect') || '/contact';
+      
+      window.location.href = redirectTo;
     } else {
       setError("Invalid username or password");
     }

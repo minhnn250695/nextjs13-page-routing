@@ -1,4 +1,19 @@
+"use client";
+import { useState, useEffect } from "react";
+import { isLoggedIn, logout } from "../utils/auth";
+
 export default function Header() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check login status on component mount
+    setUserLoggedIn(isLoggedIn());
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header>
       <div className="gradient-block"></div>
@@ -70,6 +85,19 @@ export default function Header() {
                 Contact
               </a>
             </li>
+            {userLoggedIn ? (
+              <li>
+                <a href="#" onClick={handleLogout} title="">
+                  Logout
+                </a>
+              </li>
+            ) : (
+              <li>
+                <a href="/login" title="">
+                  Login
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
 
