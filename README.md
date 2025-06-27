@@ -1,1 +1,5 @@
-# nextjs13-page-routing
+npm i
+
+#start localhost
+
+npm run dev
